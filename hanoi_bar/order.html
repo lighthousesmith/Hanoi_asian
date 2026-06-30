@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Đặt Món - HANOI BỤI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#f0eded",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary-container": "#fd778a",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#1a1c1b",
+                    "secondary-fixed-dim": "#c6c7c5",
+                    "on-primary-fixed": "#00210d",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#e2e3e1",
+                    "primary-container": "#32b86c",
+                    "tertiary-fixed": "#ffdadc",
+                    "on-tertiary-fixed-variant": "#871d34",
+                    "on-tertiary-fixed": "#400010",
+                    "surface-dim": "#dcd9d9",
+                    "surface": "#fcf9f8",
+                    "secondary": "#5d5f5d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-tint": "#006d3a",
+                    "inverse-surface": "#313030",
+                    "inverse-primary": "#5fde8e",
+                    "inverse-on-surface": "#f3f0ef",
+                    "primary-fixed": "#7cfba7",
+                    "on-secondary-container": "#636563",
+                    "background": "#fcf9f8",
+                    "on-tertiary-container": "#720a26",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb2b9",
+                    "secondary-fixed": "#e2e3e1",
+                    "on-surface": "#1c1b1b",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "primary": "#006d3a",
+                    "tertiary": "#a7354a",
+                    "on-primary-fixed-variant": "#00522a",
+                    "on-secondary-fixed-variant": "#454746",
+                    "on-surface-variant": "#3d4a3f",
+                    "on-error-container": "#93000a",
+                    "outline": "#6d7a6e",
+                    "on-primary-container": "#004220",
+                    "surface-container-high": "#eae7e7",
+                    "surface-bright": "#fcf9f8",
+                    "outline-variant": "#bccabc",
+                    "primary-fixed-dim": "#5fde8e",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "margin-desktop": "40px",
+                    "xl": "80px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "margin-mobile": "16px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Be Vietnam Pro"],
+                    "headline-md": ["Anton"],
+                    "display-lg": ["Anton"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-lg": ["Anton"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg-mobile": ["Anton"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-3d {
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .btn-3d:active {
+            transform: translateY(2px);
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+        }
+        .card-shadow {
+            box-shadow: 0px 4px 0px rgba(26, 26, 26, 0.05);
+        }
+        .card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 24px rgba(26, 26, 26, 0.1);
+        }
+        /* Custom scrollbar for menu */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Redesign styling additions */
+        .urban-border {
+            border: 2px solid #1C1B1B;
+        }
+        .urban-shadow {
+            box-shadow: 4px 4px 0px #1C1B1B;
+        }
+        .active-press {
+            transition: transform 0.1s ease;
+        }
+        .active-press:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden pt-20">
+
+<!-- TopNavBar Redesigned (Same as index.html) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white border-b-2 border-on-background px-margin-mobile md:px-margin-desktop py-base transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="index.html">
+                <img alt="Hanoi Asian Food Logo" class="h-12 w-auto object-contain" src="logo.png" style="image-rendering: -webkit-optimize-contrast;"/>
+            </a>
+        </div>
+        <nav class="hidden md:flex gap-lg items-center">
+            <a class="text-on-background font-headline-md text-[18px] hover:text-primary transition-colors uppercase" href="order.html">Đặt món</a>
+            <a class="text-on-background font-headline-md text-[18px] hover:text-primary transition-colors uppercase" href="ảnh.html">Thư viện</a>
+            <a class="text-on-background font-headline-md text-[18px] hover:text-primary transition-colors uppercase" href="contact.html">Liên hệ</a>
+            
+            <div class="flex items-center gap-xs ml-md border-l-2 border-outline-variant pl-md">
+                <span class="material-symbols-outlined text-on-surface-variant">language</span>
+                <span class="font-label-bold text-label-bold">VN/EN</span>
+            </div>
+            
+            <!-- Cart Icon with Badge -->
+            <button onclick="toggleCartDrawer(true)" class="relative hover:text-primary transition-colors flex items-center ml-md mr-xs text-on-background active-press">
+                <span class="material-symbols-outlined text-3xl">shopping_cart</span>
+                <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 bg-tertiary text-on-tertiary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+            </button>
+        </nav>
+        
+        <!-- Mobile Right Controls -->
+        <div class="flex items-center gap-sm md:hidden">
+            <!-- Mobile Cart Button -->
+            <button onclick="toggleCartDrawer(true)" class="relative hover:text-primary transition-colors flex items-center text-on-background active-press">
+                <span class="material-symbols-outlined text-3xl">shopping_cart</span>
+                <span id="mobile-cart-badge" class="hidden absolute -top-1.5 -right-1.5 bg-tertiary text-on-tertiary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+            </button>
+            <button onclick="toggleMobileMenu(true)" class="text-primary active-press">
+                <span class="material-symbols-outlined text-4xl">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Navigation Drawer Overlay (Same as index.html) -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="absolute right-0 top-0 bottom-0 w-[80%] max-w-[320px] bg-background border-l-2 border-on-background p-md flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex justify-between items-center mb-lg border-b-2 border-on-background pb-sm">
+                <h3 class="font-display-lg text-headline-md uppercase text-primary">Menu</h3>
+                <button onclick="toggleMobileMenu(false)" class="text-on-background active-press">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-md">
+                <a onclick="toggleMobileMenu(false)" class="text-on-background font-headline-md text-headline-md hover:text-primary transition-colors uppercase py-xs block border-b border-outline-variant/30" href="order.html">Đặt món</a>
+                <a onclick="toggleMobileMenu(false)" class="text-on-background font-headline-md text-headline-md hover:text-primary transition-colors uppercase py-xs block border-b border-outline-variant/30" href="ảnh.html">Thư viện</a>
+                <a onclick="toggleMobileMenu(false)" class="text-on-background font-headline-md text-headline-md hover:text-primary transition-colors uppercase py-xs block border-b border-outline-variant/30" href="contact.html">Liên hệ</a>
+            </nav>
+        </div>
+        <div class="border-t-2 border-outline-variant pt-md flex flex-col gap-sm">
+            <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-on-surface-variant">language</span>
+                <span class="font-label-bold text-label-bold">VN/EN</span>
+            </div>
+            <button onclick="toggleMobileMenu(false); document.getElementById('appetizers').scrollIntoView({behavior: 'smooth'})" class="w-full bg-primary hover:bg-primary-container text-white font-headline-md py-3 rounded-full transition-colors active-press uppercase">Đặt Ngay</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Drawer Overlay (Same as index.html) -->
+<div id="cart-drawer" class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-background border-l-2 border-on-background p-md flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex justify-between items-center mb-md border-b-2 border-on-background pb-sm">
+                <h3 class="font-display-lg text-headline-md uppercase text-primary flex items-center gap-xs">
+                    <span class="material-symbols-outlined">shopping_cart</span> Giỏ hàng của bạn
+                </h3>
+                <button onclick="toggleCartDrawer(false)" class="text-on-background active-press">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <!-- Scrollable cart items list -->
+            <div id="cart-items-container" class="flex flex-col gap-sm max-h-[60vh] overflow-y-auto pr-xs no-scrollbar">
+                <!-- Cart items dynamically rendered -->
+            </div>
+        </div>
+        <div class="border-t-2 border-on-background pt-md">
+            <div class="flex justify-between items-center mb-md">
+                <span class="font-display-lg text-headline-md uppercase text-on-background">Tổng cộng:</span>
+                <span id="cart-total-price" class="font-display-lg text-headline-md text-primary">0 PLN</span>
+            </div>
+            <button onclick="openCheckoutModal()" class="w-full bg-primary hover:bg-primary-container text-white font-headline-md py-3 rounded-full transition-colors active-press uppercase text-center block">Đặt hàng ngay</button>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout Modal Window (Same as index.html) -->
+<div id="checkout-modal" class="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-md">
+    <div class="bg-background max-w-lg w-full rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] p-lg relative overflow-y-auto max-h-[90vh] no-scrollbar transform opacity-0 scale-95 duration-200">
+        <button onclick="closeCheckoutModal()" class="absolute top-md right-md text-on-background active-press">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <h3 class="font-display-lg text-headline-lg uppercase text-primary mb-md">Xác nhận đơn hàng</h3>
+        
+        <form id="checkout-form" onsubmit="submitOrder(event)" class="flex flex-col gap-md">
+            <!-- Ticket summary container -->
+            <div class="bg-surface-container-low p-sm rounded-lg border-2 border-on-background border-dashed border-outline-variant mb-xs">
+                <h4 class="font-label-bold uppercase text-on-surface-variant mb-xs text-xs">Món ăn đã chọn:</h4>
+                <div id="checkout-summary-items" class="flex flex-col gap-xs font-body-sm text-sm">
+                    <!-- Dynamically rendered -->
+                </div>
+                <div class="border-t border-outline-variant border-dashed mt-sm pt-xs flex justify-between font-label-bold text-base text-primary">
+                    <span>Tổng tiền:</span>
+                    <span id="checkout-summary-total">0 PLN</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-1">
+                <label for="cust-name" class="font-label-bold text-xs uppercase text-on-surface-variant">Họ và Tên *</label>
+                <input type="text" id="cust-name" required placeholder="Nhập tên của bạn" class="rounded-lg border-2 border-on-background px-sm py-xs font-body-md focus:ring-0 focus:border-primary"/>
+            </div>
+            
+            <div class="flex flex-col gap-1">
+                <label for="cust-phone" class="font-label-bold text-xs uppercase text-on-surface-variant">Số Điện Thoại *</label>
+                <input type="tel" id="cust-phone" required placeholder="Nhập số điện thoại" class="rounded-lg border-2 border-on-background px-sm py-xs font-body-md focus:ring-0 focus:border-primary"/>
+            </div>
+            
+            <div class="flex flex-col gap-1">
+                <label for="cust-location" class="font-label-bold text-xs uppercase text-on-surface-variant">Chọn cơ sở nhận *</label>
+                <select id="cust-location" required class="rounded-lg border-2 border-on-background px-sm py-xs font-body-md focus:ring-0 focus:border-primary bg-white">
+                    <option value="Bemowo (37 Człuchowska St.)">Bemowo (37 Człuchowska St.)</option>
+                    <option value="Kaliskiego (15 Gen. S. Kaliskiego St.)">Kaliskiego (15 Gen. S. Kaliskiego St.)</option>
+                </select>
+            </div>
+            
+            <div class="flex flex-col gap-1">
+                <label for="cust-note" class="font-label-bold text-xs uppercase text-on-surface-variant">Ghi chú (Tùy chọn)</label>
+                <textarea id="cust-note" rows="2" placeholder="Ví dụ: không ăn hành, thêm tương ớt..." class="rounded-lg border-2 border-on-background px-sm py-xs font-body-md focus:ring-0 focus:border-primary"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full mt-sm bg-primary hover:bg-primary-container text-white font-headline-md py-3 rounded-full transition-colors active-press uppercase">Gửi đơn hàng</button>
+        </form>
+    </div>
+</div>
+
+<!-- Success Modal Window (Same as index.html) -->
+<div id="success-modal" class="fixed inset-0 z-[120] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-md">
+    <div class="bg-background max-w-md w-full rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] p-lg text-center relative rotate-[-1deg] transform opacity-0 scale-95 duration-200">
+        <div class="w-20 h-20 bg-primary text-white rounded-full border-2 border-on-background flex items-center justify-center mx-auto mb-md animate-bounce">
+            <span class="material-symbols-outlined text-5xl">check</span>
+        </div>
+        <h3 class="font-display-lg text-headline-lg uppercase text-primary mb-xs">Đặt hàng thành công!</h3>
+        <p class="font-body-md text-on-surface-variant mb-md text-sm">
+            Cảm ơn bạn! Đơn hàng đã được ghi nhận. Nhà hàng sẽ liên hệ với bạn trong 5 phút nữa để xác nhận đơn.
+        </p>
+        <div class="bg-surface-container p-sm rounded-lg border-2 border-on-background mb-lg text-left text-xs font-body-sm flex flex-col gap-1.5 border-dashed border-outline-variant">
+            <p><strong>Mã đơn hàng:</strong> <span id="success-order-id" class="font-mono text-primary font-bold">#HN-12345</span></p>
+            <p><strong>Khách hàng:</strong> <span id="success-cust-name-val">Nguyễn Văn A</span></p>
+            <p><strong>Điện thoại:</strong> <span id="success-cust-phone-val">123456789</span></p>
+            <p><strong>Địa điểm nhận:</strong> <span id="success-cust-location-val">Bemowo</span></p>
+        </div>
+        <button onclick="closeSuccessModal()" class="w-full bg-primary hover:bg-primary-container text-white font-headline-md py-3 rounded-full transition-colors active-press uppercase">Quay lại trang chủ</button>
+    </div>
+</div>
+
+<main class="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-8 px-margin-mobile md:px-margin-desktop pt-24 pb-8 mb-24 lg:mb-0">
+    <!-- Left Section: Categories (SideNavBar behavior for Desktop) -->
+    <aside class="hidden lg:flex flex-col w-64 shrink-0 sticky top-28 h-fit space-y-4">
+        <div class="p-md bg-surface-container dark:bg-surface-container-highest rounded-xl border-r-2 border-on-surface/5 shadow-[4px_0px_0px_rgba(26,26,26,0.05)]">
+            <h2 class="font-headline-md text-headline-md text-primary mb-1">Danh Mục</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-6">Hương vị đường phố Hà Nội</p>
+            <nav class="space-y-2">
+                <a class="flex items-center gap-3 p-3 bg-primary text-on-primary rounded-lg shadow-[0px_4px_0px_rgba(0,0,0,0.2)] scale-95 transition-all" href="#appetizers">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+                    <span class="font-label-bold text-label-bold">Khai Vị</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform" href="#pho">
+                    <span class="material-symbols-outlined">rice_bowl</span>
+                    <span class="font-label-bold text-label-bold">Phở Hà Nội</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform" href="#mains">
+                    <span class="material-symbols-outlined">lunch_dining</span>
+                    <span class="font-label-bold text-label-bold">Món Chính</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Center Section: Menu Items -->
+    <section class="flex-1 space-y-8 md:space-y-12">
+        <!-- Hero Banner -->
+        <div class="relative w-full h-40 md:h-64 rounded-2xl overflow-hidden shadow-[0px_12px_24px_rgba(26,26,26,0.12)]">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+            <img alt="Vietnamese Street Food Spread" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLse1SJ0H72qF-MXt2adAVezmJ9woC_7FjmawPuZ5RGxjhibvKO3WD_6Ze4QggRPrCyeCzy0vAwBs_eO_yDWo9RpJoHfl1Pg2xEEHvosob8tjdBXj2d__lnCv-AYUBCm0juq5s5c1CtmvWhGciAa4LAg1apvUrRsjh7-VdPrf_PgRS6ntZ_CXiBlu6NeCqKvp0tXrK5c_OMSBWJk9H2w4PejuCS3JgOiLnDxM05OtGPPg_37BF0nCgyaj7Y"/>
+            <div class="absolute inset-0 z-20 flex flex-col justify-center px-10 text-white">
+                <span class="bg-primary-container text-on-primary-container font-label-bold text-label-sm w-fit px-3 py-1 rounded-full mb-4">MỚI NHẤT</span>
+                <h1 class="font-headline-lg text-headline-lg mb-2">Thưởng Thức Vị Hà Nội</h1>
+                <p class="font-body-lg text-body-lg max-w-md opacity-90">Từ đường phố Tạ Hiện đến bàn ăn của bạn. Đậm đà, nóng hổi, chuẩn vị.</p>
+            </div>
+        </div>
+
+        <!-- Sticky Horizontal Categories bar (Mobile Only - custom layout requested) -->
+        <nav class="lg:hidden flex overflow-x-auto no-scrollbar gap-4 py-4 px-2 sticky top-[72px] bg-background z-20 border-b border-on-surface/5">
+            <a class="flex-none px-6 py-2 bg-primary text-on-primary rounded-full font-label-bold text-label-sm shadow-sm" href="#appetizers">Khai Vị</a>
+            <a class="flex-none px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-bold text-label-sm" href="#pho">Phở Hà Nội</a>
+            <a class="flex-none px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-bold text-label-sm" href="#mains">Món Chính</a>
+        </nav>
+
+        <!-- Appetizers Section -->
+        <div class="space-y-4 md:space-y-6" id="appetizers">
+            <div class="flex items-center justify-between">
+                <h3 class="font-headline-md text-headline-md border-l-4 border-primary pl-4 uppercase">Khai Vị / Appetizers</h3>
+            </div>
+            <div class="grid grid-cols-1 gap-4 md:gap-6">
+                <!-- Item 1: Nem Cuốn Tôm Thịt -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Nem Cuốn Tôm Thịt" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLvJurzytCDI_W7mAT9ZChDjLt7uyf8uSeGofMsEaLuuWNCf9VQo5Q9tWSv0Z_3LZXby_1J7i5bBkm-oE8T1zWpRi_X3iBiz3Wi-VzKKN_XWWzp3hBTra3ltD6UUdKkhI-oVw-Ty0Apc3cg6HTt8SpoTY0vmJxMdpyHN3JrnPQMIoaZf0ibg8s4xQybh4cqWTVe50fO_UI6IETdLLnsB0eMaNHakBCC_ztMs8imsNLvs7--IWFFhAXCz5hD8"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Nem Cuốn Tôm Thịt</h4>
+                            <p class="text-body-md text-on-surface-variant">Tôm tươi, bún, rau thơm, chấm mắm nêm đậm đà.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">25</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('nem-cuon-tom-thit')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                    <span class="absolute top-3 right-3 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-1 rounded-lg transform rotate-6 shadow-sm border border-black/5 z-10">HOT</span>
+                </div>
+
+                <!-- Item 2: Nem Rán Hà Nội -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Nem Rán Hà Nội" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="nem%20r%C3%A1n.jpg"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Nem Rán Hà Nội</h4>
+                            <p class="text-body-md text-on-surface-variant">Vỏ giòn rụm, nhân thịt băm, nấm mèo và miến.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">28</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('nem-ran')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pho Section -->
+        <div class="space-y-4 md:space-y-6" id="pho">
+            <div class="flex items-center justify-between">
+                <h3 class="font-headline-md text-headline-md border-l-4 border-primary pl-4 uppercase">Phở Hà Nội / Pho Soups</h3>
+            </div>
+            <div class="grid grid-cols-1 gap-4 md:gap-6">
+                <!-- Item 3: Phở Bò -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Phở Bò" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="ph%E1%BB%9F%20b%C3%B2.jpg"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Phở Bò</h4>
+                            <p class="text-body-md text-on-surface-variant">Nước dùng ninh từ xương bò trong 12 giờ, bánh phở mềm và thịt bò tái lăn. Linh hồn ẩm thực Hà Nội.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">36</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('pho-bo')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Bún Chả Hà Nội -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Bún Chả Hà Nội" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLuOLGiiEnPxXYYC2VFCshK7IcaGIJv88Q6LG3qlnIKUHqsD13x8z7OBSdfBr7Vz_iFz72dUhjhZQjrGTlXi0WKG86EOcbRRnWpTFvinEyeDYYGLhX_P6KJpoIyNUzD0k9F-71YNXZtN4Hhe63QlJjl6PAq3fwf0j6JTqFpIzE7N0Rcur2woYv79JbNYf3zYBAXn0U91Fr-_l6TqW7SAOhNRAgNbxno0QAP9arLJjmelNIB1mikmiUNOgHxe"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Bún Chả Hà Nội</h4>
+                            <p class="text-body-md text-on-surface-variant">Chả nướng than hoa thơm lừng, nước chấm đu đủ xanh đậm đà, ăn kèm bún tươi và rau sống đặc trưng vỉa hè.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">42</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('bun-cha')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mains Section -->
+        <div class="space-y-4 md:space-y-6" id="mains">
+            <div class="flex items-center justify-between">
+                <h3 class="font-headline-md text-headline-md border-l-4 border-primary pl-4 uppercase">Món Chính / Main Dishes</h3>
+            </div>
+            <div class="grid grid-cols-1 gap-4 md:gap-6">
+                <!-- Item 5: Tôm Nướng -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Tôm Nướng" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="t%C3%B4m%20n%C6%B0%E1%BB%9Bng.jpg"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Tôm Nướng</h4>
+                            <p class="text-body-md text-on-surface-variant">Tôm nướng mọi muối ớt đậm đà thơm ngậy ăn kèm chanh tươi cay nồng chuẩn vị.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">42</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('tom-nuong')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Bánh Mì Đặc Biệt -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                        <img alt="Bánh Mì Đặc Biệt" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLt4yjqbioXKa6_ceJmhWHdUB0hJ9F2k1ewLswpKi4JUo-MJKIMg-q6qccVYd-86pbp4rSUhANEtUWIE1ZQHSW35hMdNOYfXZWAbO8C67oSPbY5kDhP1l18DjvBJVdnB9E-Av6W-iL8vXbnTXA5FNtOrPjhWGaeQ5CoTeWgeL7FIq7wNFH7dWyuSdpjCe7-JPSTmAJcUvhiidXfwspA-h42L9wq_8FglCWgL6p411ATVBrOtys2-o_3QzHRd"/>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Bánh Mì Đặc Biệt</h4>
+                            <p class="text-body-md text-on-surface-variant">Pate gan béo ngậy, giò lụa, xá xíu, dưa góp và sốt bơ trứng thơm phức giòn rụm.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">32</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('combo-banh-mi')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Cơm Rang Dưa Bò -->
+                <div class="group relative bg-white border border-on-surface/10 rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-7xl text-primary">lunch_dining</span>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1 text-tertiary">
+                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="font-label-bold text-[12px] uppercase">Món ăn tiêu biểu</span>
+                            </div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface">Cơm Rang Dưa Bò</h4>
+                            <p class="text-body-md text-on-surface-variant">Cơm rang hạt săn tơi giòn ngon, ăn kèm thịt bò xào dưa cải chua giòn đậm đà nóng hổi.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-headline-md text-primary text-3xl">38</span>
+                                <span class="font-label-bold text-primary">PLN</span>
+                            </div>
+                            <button onclick="addToCart('com-rang-dua-bo')" class="px-6 py-2 bg-primary text-white font-label-bold rounded-full flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                <span class="material-symbols-outlined">add</span>THÊM VÀO GIỎ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Right Column: Sticky Your Order -->
+    <aside class="hidden lg:block lg:w-80 shrink-0">
+        <div class="sticky top-28 space-y-6">
+            <div class="bg-white border-2 border-on-background rounded-2xl p-6 shadow-[4px_4px_0px_#1C1B1B] overflow-hidden relative">
+                <!-- Ticket Aesthetic Header -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+                <div class="flex items-center justify-between mb-6 border-b-2 border-on-background pb-sm">
+                    <h3 class="font-headline-md text-headline-md text-primary">ĐƠN HÀNG CỦA BẠN</h3>
+                    <span class="material-symbols-outlined text-primary text-3xl">receipt_long</span>
+                </div>
+                
+                <!-- Cart Items Container -->
+                <div id="order-cart-items" class="space-y-4 mb-8 max-h-[40vh] overflow-y-auto pr-xs no-scrollbar">
+                    <!-- Dynamically rendered -->
+                </div>
+                
+                <!-- Subtotal with Ticket Divider -->
+                <div class="border-t-2 border-dashed border-on-surface/20 pt-6 space-y-3">
+                    <div class="flex justify-between text-on-surface-variant font-label-bold">
+                        <span>Tạm tính</span>
+                        <span id="order-subtotal">0 PLN</span>
+                    </div>
+                    <div class="flex justify-between text-on-surface-variant font-label-bold">
+                        <span>Phí giao hàng</span>
+                        <span class="text-primary font-bold">FREE</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-2 border-t border-outline-variant/30">
+                        <span class="font-headline-md text-headline-md uppercase">Tổng cộng</span>
+                        <span id="order-total" class="font-headline-md text-headline-md text-primary">0 PLN</span>
+                    </div>
+                </div>
+                
+                <!-- Checkout Button using Zamów design -->
+                <button onclick="openCheckoutModal()" class="w-full mt-8 py-4 bg-primary text-white font-headline-md text-xl rounded-xl btn-3d shadow-[0px_6px_0px_rgba(0,66,32,0.3)] flex items-center justify-center gap-3 active-press">
+                    THANH TOÁN
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+                
+                <!-- Payment Icons -->
+                <div class="mt-6 flex justify-center items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+                    <svg class="h-6" fill="currentColor" viewbox="0 0 50 20"><path d="M19.6 1.4h-3L14.6 13h2.8l.6-3.8h3.3c2.7 0 4.8-1.5 4.8-3.9 0-2.4-2-3.9-6.5-3.9zm.6 5.1h-2.1l.3-2.5h2.1c1.3 0 2 .4 2 1.2 0 .9-.7 1.3-2.3 1.3zM41.7 1.4l-3.3 8.3-1-8.3h-2.9l2.2 11.6h2.9l4.9-11.6h-2.8zM31.2 5.5l.2-1.3c.1-.8.6-1.2 1.6-1.2h1.6V1.4h-1.6c-2.4 0-4 1.1-4.3 3.3l-.1.8h-1.5v2.6h1.5l-1.3 5h2.8l1.3-5h2.4V6.3l-2.6-.8z"></path></svg>
+                    <div class="h-4 w-[1px] bg-on-surface/20"></div>
+                    <svg class="h-5" fill="currentColor" viewbox="0 0 100 40"><path d="M43.7 12.8h-4.3l-2.7 11.4c-.2 1-.4 1.4-1.2 1.4h-1.6l-.3 1.2h7.6c1.1 0 1.6-.5 1.8-1.5l.7-12.5zm-15.6 0H20c-1.3 0-2 .6-2.5 1.5l-6 13.9h4.3l.9-2.4h5.3l.5 2.4h4.5l-4.4-15.4zm-6.6 9.8l1.7-4.7 1 4.7h-2.7zm57.8-9.8l-4.2 11c-.5 1.4-1 2-2.3 2H66l-.3 1.2h4.5c1.1 0 1.9-.4 2.3-1.6l10.3-20h-4.4z"></path></svg>
+                </div>
+            </div>
+        </div>
+    </aside>
+</main>
+
+<!-- Redesigned Footer (Same as index.html) -->
+<footer class="w-full px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-1 md:grid-cols-4 gap-gutter bg-on-background text-primary-fixed border-t-2 border-primary mt-xl">
+    <div class="flex flex-col gap-sm md:col-span-1">
+        <a href="index.html">
+            <img alt="Hanoi Asian Food Logo" class="h-12 w-auto object-contain self-start mb-base" src="logo.png" style="image-rendering: -webkit-optimize-contrast;"/>
+        </a>
+        <p class="font-body-sm text-label-sm text-secondary-fixed-dim">Nhịp đập văn hóa ẩm thực đường phố Việt Nam giữa lòng thành phố.</p>
+        <p class="font-label-bold text-label-bold mt-md">© 2024 Hanoi Asian Food.</p>
+    </div>
+    <div class="flex flex-col gap-sm">
+        <h4 class="font-label-bold text-primary-fixed uppercase mb-base">Theo dõi ngay</h4>
+        <div class="flex gap-md">
+            <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all flex items-center gap-xs" href="#">
+                <img src="facebook.png" class="h-5 w-5 object-contain" alt="Facebook"/>
+                <span class="font-label-bold uppercase">Facebook</span>
+            </a>
+        </div>
+        <div class="flex gap-md">
+            <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all flex items-center gap-xs" href="#">
+                <img src="instagram.png" class="h-5 w-5 object-contain" alt="Instagram"/>
+                <span class="font-label-bold uppercase">Instagram</span>
+            </a>
+        </div>
+    </div>
+    <div class="flex flex-col gap-sm">
+        <h4 class="font-label-bold text-primary-fixed uppercase mb-base">Địa chỉ</h4>
+        <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all font-body-sm text-label-sm" href="index.html#locations">Bemowo: 37 Człuchowska St.</a>
+        <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all font-body-sm text-label-sm" href="index.html#locations">Kaliskiego: 15 Gen. S. Kaliskiego St.</a>
+    </div>
+    <div class="flex flex-col gap-sm">
+        <h4 class="font-label-bold text-primary-fixed uppercase mb-base">Thông tin</h4>
+        <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all font-body-sm text-label-sm" href="#">Chính sách bảo mật</a>
+        <a class="text-secondary-fixed-dim hover:text-primary-fixed-dim transition-all font-body-sm text-label-sm" href="#">Điều khoản sử dụng</a>
+    </div>
+</footer>
+
+<!-- Mobile Bottom Sticky Cart Bar (Same as index.html) -->
+<div id="mobile-sticky-cart" class="md:hidden fixed bottom-0 left-0 w-full p-margin-mobile z-50 transform translate-y-24 transition-transform duration-300">
+    <button onclick="toggleCartDrawer(true)" class="w-full bg-primary hover:bg-primary-container text-white font-headline-md py-3 rounded-full shadow-lg flex justify-between items-center px-6 active-press uppercase">
+        <span class="flex items-center gap-xs">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span>Giỏ hàng (<span id="sticky-cart-count">0</span>)</span>
+        </span>
+        <span id="sticky-cart-total">0 PLN</span>
+    </button>
+</div>
+
+<!-- JavaScript System -->
+<script>
+    // ----------------------------------------------------
+    // Simple scroll spy and navigation highlighting
+    // ----------------------------------------------------
+    window.addEventListener('scroll', () => {
+        const sections = ['appetizers', 'pho', 'mains'];
+        let current = '';
+        
+        sections.forEach(section => {
+            const element = document.getElementById(section);
+            if (element) {
+                const sectionTop = element.offsetTop;
+                if (window.pageYOffset >= sectionTop - 180) {
+                    current = section;
+                }
+            }
+        });
+
+        // Desktop nav highlighting
+        const navLinks = document.querySelectorAll('aside nav a');
+        navLinks.forEach(link => {
+            link.classList.remove('bg-primary', 'text-on-primary', 'shadow-[0px_4px_0px_rgba(0,0,0,0.2)]', 'scale-95');
+            link.classList.add('text-on-surface-variant', 'hover:bg-surface-variant/50');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('bg-primary', 'text-on-primary', 'shadow-[0px_4px_0px_rgba(0,0,0,0.2)]', 'scale-95');
+                link.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant/50');
+            }
+        });
+
+        // Mobile categories nav highlighting (custom sticky layout)
+        const mobileLinks = document.querySelectorAll('main nav a');
+        mobileLinks.forEach(link => {
+            link.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            link.classList.add('bg-surface-container', 'text-on-surface-variant');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                link.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            }
+        });
+    });
+
+    // ----------------------------------------------------
+    // Shopping Cart System (with LocalStorage & Shared States)
+    // ----------------------------------------------------
+    const menuItems = {
+        'nem-ran': { id: 'nem-ran', name: 'Nem Rán Hà Nội', price: 28, image: 'nem%20r%C3%A1n.jpg' },
+        'pho-bo': { id: 'pho-bo', name: 'Phở Bò', price: 36, image: 'ph%E1%BB%9F%20b%C3%B2.jpg' },
+        'tom-nuong': { id: 'tom-nuong', name: 'Tôm Nướng', price: 42, image: 't%C3%B4m%20n%C6%B0%E1%BB%9Bng.jpg' },
+        'combo-banh-mi': { id: 'combo-banh-mi', name: 'Bánh Mì Đặc Biệt', price: 32, image: 'https://lh3.googleusercontent.com/aida/AP1WRLt4yjqbioXKa6_ceJmhWHdUB0hJ9F2k1ewLswpKi4JUo-MJKIMg-q6qccVYd-86pbp4rSUhANEtUWIE1ZQHSW35hMdNOYfXZWAbO8C67oSPbY5kDhP1l18DjvBJVdnB9E-Av6W-iL8vXbnTXA5FNtOrPjhWGaeQ5CoTeWgeL7FIq7wNFH7dWyuSdpjCe7-JPSTmAJcUvhiidXfwspA-h42L9wq_8FglCWgL6p411ATVBrOtys2-o_3QzHRd' },
+        'nem-cuon-tom-thit': { id: 'nem-cuon-tom-thit', name: 'Nem Cuốn Tôm Thịt', price: 25, image: 'https://lh3.googleusercontent.com/aida/AP1WRLvJurzytCDI_W7mAT9ZChDjLt7uyf8uSeGofMsEaLuuWNCf9VQo5Q9tWSv0Z_3LZXby_1J7i5bBkm-oE8T1zWpRi_X3iBiz3Wi-VzKKN_XWWzp3hBTra3ltD6UUdKkhI-oVw-Ty0Apc3cg6HTt8SpoTY0vmJxMdpyHN3JrnPQMIoaZf0ibg8s4xQybh4cqWTVe50fO_UI6IETdLLnsB0eMaNHakBCC_ztMs8imsNLvs7--IWFFhAXCz5hD8' },
+        'bun-cha': { id: 'bun-cha', name: 'Bún Chả Hà Nội', price: 42, image: 'https://lh3.googleusercontent.com/aida/AP1WRLuOLGiiEnPxXYYC2VFCshK7IcaGIJv88Q6LG3qlnIKUHqsD13x8z7OBSdfBr7Vz_iFz72dUhjhZQjrGTlXi0WKG86EOcbRRnWpTFvinEyeDYYGLhX_P6KJpoIyNUzD0k9F-71YNXZtN4Hhe63QlJjl6PAq3fwf0j6JTqFpIzE7N0Rcur2woYv79JbNYf3zYBAXn0U91Fr-_l6TqW7SAOhNRAgNbxno0QAP9arLJjmelNIB1mikmiUNOgHxe' },
+        'com-rang-dua-bo': { id: 'com-rang-dua-bo', name: 'Cơm Rang Dưa Bò', price: 38, image: '' }
+    };
+
+    let cart = [];
+    try {
+        const stored = localStorage.getItem('hanoi_bar_cart');
+        if (stored) {
+            cart = JSON.parse(stored);
+            if (!Array.isArray(cart)) {
+                cart = [];
+            }
+        }
+    } catch (e) {
+        console.error('Error loading cart:', e);
+        cart = [];
+    }
+
+    function saveCart() {
+        localStorage.setItem('hanoi_bar_cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function addToCart(id) {
+        const item = menuItems[id];
+        if (!item) return;
+        const existing = cart.find(x => x.id === id);
+        if (existing) {
+            existing.quantity++;
+        } else {
+            cart.push({ ...item, quantity: 1 });
+        }
+        saveCart();
+    }
+
+    function changeQuantity(id, amount) {
+        const existing = cart.find(x => x.id === id);
+        if (!existing) return;
+        existing.quantity += amount;
+        if (existing.quantity <= 0) {
+            cart = cart.filter(x => x.id !== id);
+        }
+        saveCart();
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(x => x.id !== id);
+        saveCart();
+    }
+
+    function clearCart() {
+        cart = [];
+        saveCart();
+    }
+
+    function updateCartUI() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        // Header Badges
+        const headerBadge = document.getElementById('cart-badge');
+        const mobileBadge = document.getElementById('mobile-cart-badge');
+        if (headerBadge) {
+            headerBadge.innerText = totalItems;
+            headerBadge.classList.toggle('hidden', totalItems === 0);
+        }
+        if (mobileBadge) {
+            mobileBadge.innerText = totalItems;
+            mobileBadge.classList.toggle('hidden', totalItems === 0);
+        }
+
+        // 3. Side Panel Cart in order.html (Order Page Sidebar)
+        const orderCartContainer = document.getElementById('order-cart-items');
+        const orderSubtotal = document.getElementById('order-subtotal');
+        const orderTotal = document.getElementById('order-total');
+        
+        if (orderCartContainer) {
+            if (cart.length === 0) {
+                orderCartContainer.innerHTML = `
+                    <div class="text-center py-8 text-on-surface-variant/60">
+                        <span class="material-symbols-outlined text-4xl mb-xs">shopping_bag</span>
+                        <p class="font-body-md">Giỏ hàng của bạn đang trống.</p>
+                    </div>
+                `;
+            } else {
+                orderCartContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-start justify-between gap-3 border-b border-outline-variant/20 pb-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-primary-container/10 border border-primary text-primary rounded-lg flex items-center justify-center font-label-bold text-xs">
+                                ${item.quantity}x
+                            </div>
+                            <div>
+                                <p class="font-label-bold text-on-surface text-sm">${item.name}</p>
+                                <div class="flex items-center gap-xs mt-1">
+                                    <button onclick="changeQuantity('${item.id}', -1)" class="w-5 h-5 bg-surface-container hover:bg-surface-container-highest rounded flex items-center justify-center text-[10px]">-</button>
+                                    <button onclick="changeQuantity('${item.id}', 1)" class="w-5 h-5 bg-surface-container hover:bg-surface-container-highest rounded flex items-center justify-center text-[10px]">+</button>
+                                    <button onclick="removeFromCart('${item.id}')" class="text-[10px] text-error ml-2 hover:underline">Xóa</button>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="font-label-bold text-on-surface text-sm">${item.price * item.quantity} PLN</span>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        if (orderSubtotal) orderSubtotal.innerText = `${subtotal} PLN`;
+        if (orderTotal) orderTotal.innerText = `${subtotal} PLN`;
+
+        // 4. Mobile Drawer Cart
+        const drawerContainer = document.getElementById('cart-items-container');
+        const drawerTotal = document.getElementById('cart-total-price');
+        
+        if (drawerContainer) {
+            if (cart.length === 0) {
+                drawerContainer.innerHTML = `
+                    <div class="text-center py-12 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-5xl mb-sm text-outline-variant">shopping_cart</span>
+                        <p class="font-body-lg">Giỏ hàng đang trống</p>
+                    </div>
+                `;
+            } else {
+                drawerContainer.innerHTML = cart.map(item => `
+                    <div class="flex justify-between items-center gap-sm bg-white p-sm rounded-xl border-2 border-on-background shadow-[2px_2px_0px_#1C1B1B] mb-xs">
+                        <div class="flex items-center gap-sm">
+                            <div class="w-12 h-12 bg-cover bg-center rounded-lg border border-on-background" style="background-image: url('${item.image}')"></div>
+                            <div>
+                                <h4 class="font-label-bold text-sm uppercase">${item.name}</h4>
+                                <p class="font-body-sm text-xs text-on-surface-variant">${item.price} PLN / phần</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-sm">
+                            <div class="flex items-center border border-on-background rounded-lg overflow-hidden">
+                                <button onclick="changeQuantity('${item.id}', -1)" class="px-2 py-1 bg-surface-container hover:bg-surface-container-highest">-</button>
+                                <span class="px-3 font-label-bold text-sm">${item.quantity}</span>
+                                <button onclick="changeQuantity('${item.id}', 1)" class="px-2 py-1 bg-surface-container hover:bg-surface-container-highest">+</button>
+                            </div>
+                            <span class="font-headline-md text-sm min-w-[50px] text-right">${item.price * item.quantity} PLN</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        if (drawerTotal) drawerTotal.innerText = `${subtotal} PLN`;
+
+        // 5. Mobile Bottom Sticky Cart
+        const stickyBar = document.getElementById('mobile-sticky-cart');
+        const stickyCount = document.getElementById('sticky-cart-count');
+        const stickyTotal = document.getElementById('sticky-cart-total');
+        
+        if (stickyBar) {
+            stickyCount.innerText = totalItems;
+            stickyTotal.innerText = `${subtotal} PLN`;
+            if (totalItems > 0) {
+                stickyBar.classList.remove('translate-y-24');
+            } else {
+                stickyBar.classList.add('translate-y-24');
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Mobile menu navigation togglers
+    // ----------------------------------------------------
+    function toggleMobileMenu(open) {
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const inner = drawer.querySelector('.absolute');
+        if (open) {
+            drawer.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.classList.remove('opacity-0');
+                inner.classList.remove('translate-x-full');
+            }, 50);
+        } else {
+            drawer.classList.add('opacity-0');
+            inner.classList.add('translate-x-full');
+            setTimeout(() => {
+                drawer.classList.add('hidden');
+            }, 300);
+        }
+    }
+
+    function toggleCartDrawer(open) {
+        const drawer = document.getElementById('cart-drawer');
+        const inner = drawer.querySelector('.absolute');
+        if (open) {
+            drawer.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.classList.remove('opacity-0');
+                inner.classList.remove('translate-x-full');
+            }, 50);
+        } else {
+            drawer.classList.add('opacity-0');
+            inner.classList.add('translate-x-full');
+            setTimeout(() => {
+                drawer.classList.add('hidden');
+            }, 300);
+        }
+    }
+
+    // ----------------------------------------------------
+    // Checkout Modal Window Handlers
+    // ----------------------------------------------------
+    function openCheckoutModal() {
+        if (cart.length === 0) return;
+        const modal = document.getElementById('checkout-modal');
+        const summaryContainer = document.getElementById('checkout-summary-items');
+        const summaryTotal = document.getElementById('checkout-summary-total');
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        summaryContainer.innerHTML = cart.map(item => `
+            <div class="flex justify-between items-center">
+                <span>${item.name} <span class="text-on-surface-variant font-bold">x${item.quantity}</span></span>
+                <span>${item.price * item.quantity} PLN</span>
+            </div>
+        `).join('');
+        summaryTotal.innerText = `${subtotal} PLN`;
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.querySelector('.max-w-lg').classList.remove('opacity-0', 'scale-95');
+        }, 50);
+    }
+
+    function closeCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        modal.querySelector('.max-w-lg').classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 200);
+    }
+
+    function submitOrder(e) {
+        e.preventDefault();
+        const name = document.getElementById('cust-name').value;
+        const phone = document.getElementById('cust-phone').value;
+        const location = document.getElementById('cust-location').value;
+        const note = document.getElementById('cust-note').value;
+        
+        if (!name || !phone) return;
+        
+        const orderId = '#HN-' + Math.floor(10000 + Math.random() * 90000);
+        
+        document.getElementById('success-order-id').innerText = orderId;
+        document.getElementById('success-cust-name-val').innerText = name;
+        document.getElementById('success-cust-phone-val').innerText = phone;
+        document.getElementById('success-cust-location-val').innerText = location;
+        
+        const successModal = document.getElementById('success-modal');
+        successModal.classList.remove('hidden');
+        setTimeout(() => {
+            successModal.querySelector('.scale-95').classList.remove('opacity-0', 'scale-95');
+        }, 50);
+        
+        clearCart();
+        closeCheckoutModal();
+    }
+
+    function closeSuccessModal() {
+        const successModal = document.getElementById('success-modal');
+        successModal.querySelector('.scale-95').classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+            successModal.classList.add('hidden');
+        }, 200);
+        
+        document.getElementById('checkout-form').reset();
+    }
+
+    // Explicitly bind functions to window object
+    window.addToCart = addToCart;
+    window.changeQuantity = changeQuantity;
+    window.removeFromCart = removeFromCart;
+    window.clearCart = clearCart;
+    window.toggleCartDrawer = toggleCartDrawer;
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.openCheckoutModal = openCheckoutModal;
+    window.closeCheckoutModal = closeCheckoutModal;
+    window.submitOrder = submitOrder;
+    window.closeSuccessModal = closeSuccessModal;
+
+    // Initialize UI on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateCartUI();
+    });
+</script>
+</body>
+</html>
