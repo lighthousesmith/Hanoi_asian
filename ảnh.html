@@ -3,126 +3,133 @@
 <html class="light" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Liên hệ - Hanoi Asian Food</title>
+<title>Thư viện | Hanoi Asian Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&family=Be+Vietnam+Pro:wght@100..900&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#bccabc",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-high": "#eae7e7",
+                    "primary-fixed": "#7cfba7",
+                    "on-primary-fixed-variant": "#00522a",
+                    "on-secondary-fixed": "#1a1c1b",
+                    "surface-bright": "#fcf9f8",
+                    "surface-dim": "#dcd9d9",
+                    "on-tertiary-fixed-variant": "#871d34",
+                    "surface-container": "#f0eded",
+                    "inverse-primary": "#5fde8e",
+                    "primary": "#006d3a",
+                    "secondary-fixed": "#e2e3e1",
+                    "secondary": "#5d5f5d",
+                    "on-primary-container": "#004220",
+                    "background": "#fcf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#5fde8e",
+                    "primary-container": "#32b86c",
+                    "on-tertiary-fixed": "#400010",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#454746",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#fd778a",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "tertiary-fixed-dim": "#ffb2b9",
+                    "secondary-fixed-dim": "#c6c7c5",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdadc",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary": "#a7354a",
+                    "surface": "#fcf9f8",
+                    "inverse-surface": "#313030",
+                    "outline": "#6d7a6e",
+                    "on-primary-fixed": "#00210d",
+                    "surface-tint": "#006d3a",
+                    "on-tertiary-container": "#720a26",
+                    "secondary-container": "#e2e3e1",
+                    "on-surface-variant": "#3d4a3f",
+                    "on-secondary-container": "#636563",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "gutter": "20px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "headline-lg": ["Anton"],
+                    "label-bold": ["Be Vietnam Pro"],
+                    "display-lg": ["Anton"],
+                    "headline-md": ["Anton"],
+                    "headline-lg-mobile": ["Anton"],
+                    "body-lg": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .lift-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0px 12px 24px rgba(26, 26, 26, 0.12);
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 20px;
         }
-        .btn-press:active {
+        .masonry-item-tall { grid-row: span 2; }
+        .masonry-item-wide { grid-column: span 2; }
+        
+        .sticker-card {
+            box-shadow: 0px 4px 0px rgba(26,26,26,0.1);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .sticker-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 24px rgba(26,26,26,0.12);
+        }
+        .press-btn:active {
             transform: translateY(2px);
         }
-        .perforated-border {
-            background-image: radial-gradient(circle, transparent 4px, #f0eded 4px);
-            background-size: 12px 100%;
-            background-position: bottom;
-            background-repeat: repeat-x;
-        }
     </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "outline-variant": "#bccabc",
-                        "surface-container-highest": "#e5e2e1",
-                        "surface-container-high": "#eae7e7",
-                        "primary-fixed": "#7cfba7",
-                        "on-primary-fixed-variant": "#00522a",
-                        "on-secondary-fixed": "#1a1c1b",
-                        "surface-bright": "#fcf9f8",
-                        "surface-dim": "#dcd9d9",
-                        "on-tertiary-fixed-variant": "#871d34",
-                        "surface-container": "#f0eded",
-                        "inverse-primary": "#5fde8e",
-                        "primary": "#006d3a",
-                        "secondary-fixed": "#e2e3e1",
-                        "secondary": "#5d5f5d",
-                        "on-primary-container": "#004220",
-                        "background": "#fcf9f8",
-                        "surface-container-low": "#f6f3f2",
-                        "on-primary": "#ffffff",
-                        "primary-fixed-dim": "#5fde8e",
-                        "primary-container": "#32b86c",
-                        "on-tertiary-fixed": "#400010",
-                        "on-error": "#ffffff",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed-variant": "#454746",
-                        "on-error-container": "#93000a",
-                        "tertiary-container": "#fd778a",
-                        "on-secondary": "#ffffff",
-                        "on-surface": "#1c1b1b",
-                        "tertiary-fixed-dim": "#ffb2b9",
-                        "secondary-fixed-dim": "#c6c7c5",
-                        "surface-variant": "#e5e2e1",
-                        "surface-container-lowest": "#ffffff",
-                        "on-background": "#1c1b1b",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-fixed": "#ffdadc",
-                        "inverse-on-surface": "#f3f0ef",
-                        "tertiary": "#a7354a",
-                        "surface": "#fcf9f8",
-                        "inverse-surface": "#313030",
-                        "outline": "#6d7a6e",
-                        "on-primary-fixed": "#00210d",
-                        "surface-tint": "#006d3a",
-                        "on-tertiary-container": "#720a26",
-                        "secondary-container": "#e2e3e1",
-                        "on-surface-variant": "#3d4a3f",
-                        "on-secondary-container": "#636563",
-                        "error-container": "#ffdad6"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-desktop": "40px",
-                        "gutter": "20px",
-                        "margin-mobile": "16px",
-                        "xl": "80px",
-                        "md": "24px",
-                        "lg": "48px",
-                        "base": "8px",
-                        "xs": "4px",
-                        "sm": "12px"
-                    },
-                    "fontFamily": {
-                        "label-sm": ["Be Vietnam Pro"],
-                        "body-md": ["Be Vietnam Pro"],
-                        "headline-lg": ["Anton"],
-                        "label-bold": ["Be Vietnam Pro"],
-                        "display-lg": ["Anton"],
-                        "headline-md": ["Anton"],
-                        "headline-lg-mobile": ["Anton"],
-                        "body-lg": ["Be Vietnam Pro"]
-                    },
-                    "fontSize": {
-                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                        "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "400"}],
-                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
-                    }
-                },
-            },
-        }
-    </script>
 </head>
-<body class="bg-surface font-body-md text-on-surface">
+<body class="bg-surface text-on-surface font-body-md">
 <!-- TopNavBar Redesigned -->
 <header class="fixed top-0 left-0 w-full z-50 bg-white border-b-2 border-on-background px-margin-mobile md:px-margin-desktop py-base transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -188,120 +195,86 @@
     </div>
 </div>
 
-<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-xl">
-<!-- Hero Section -->
-<section class="mb-xl relative overflow-hidden rounded-2xl bg-surface-container p-lg flex flex-col md:flex-row items-center gap-lg border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B]">
-<div class="flex-1 z-10">
-<div class="inline-block bg-primary-container text-on-primary-container px-sm py-xs rounded-full font-label-bold text-label-bold mb-md uppercase tracking-widest">
-                    Pańska 63 · Warszawa
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-lg">
+<!-- Gallery Header -->
+<div class="mb-lg">
+<span class="inline-flex items-center gap-xs bg-primary-container text-on-primary-container px-sm py-xs rounded-full font-label-bold text-label-bold mb-sm">
+<span class="material-symbols-outlined text-sm">photo_library</span>
+                THƯ VIỆN
+            </span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-xs uppercase tracking-tight">Giai điệu ẩm thực</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Khám phá thế giới đa sắc màu của Hanoi Asian Food qua những khung hình sống động. Từ bát Phở bốc khói đến đĩa Bún Chả đậm đà hương vị phố cổ.
+            </p>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-sm mb-lg">
+    <button class="bg-primary text-white px-6 py-2 rounded-full font-label-bold text-label-sm transition-colors active-press uppercase">Tất cả</button>
+    <button class="bg-white hover:bg-surface-container text-on-surface-variant px-6 py-2 rounded-full font-label-bold text-label-sm border border-on-background/10 transition-colors active-press uppercase">Món Phở</button>
+    <button class="bg-white hover:bg-surface-container text-on-surface-variant px-6 py-2 rounded-full font-label-bold text-label-sm border border-on-background/10 transition-colors active-press uppercase">Bún Chả</button>
+    <button class="bg-white hover:bg-surface-container text-on-surface-variant px-6 py-2 rounded-full font-label-bold text-label-sm border border-on-background/10 transition-colors active-press uppercase">Bánh Mì</button>
+    <button class="bg-white hover:bg-surface-container text-on-surface-variant px-6 py-2 rounded-full font-label-bold text-label-sm border border-on-background/10 transition-colors active-press uppercase">Khai vị</button>
+    <button class="bg-white hover:bg-surface-container text-on-surface-variant px-6 py-2 rounded-full font-label-bold text-label-sm border border-on-background/10 transition-colors active-press uppercase">Không gian</button>
+</div>
+<!-- Masonry Gallery -->
+<div class="masonry-grid">
+<!-- Pho -->
+<div class="masonry-item-tall rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A cinematic close-up of a steaming bowl of traditional Vietnamese Pho Bo, featuring thin slices of rare beef, fresh rice noodles, and a rich, clear broth garnished with cilantro and scallions. The scene is lit with warm, atmospheric light-mode studio lighting against a clean white background, reflecting a modern urban Vietnamese aesthetic with vibrant greens and deep browns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9ivhPSVA4n-IvvPssqlZAI7mpI-U8igARZ1NRhxUWt1gpSbr_Z2aTBFAG4mrIm5PEBHFNYKiwETqdHbH-mId78DPCfpfZmq1a3yvLV8nyVX_4NgeUrPHGnBSqchdiaEDeLBgMjSG8Bvd2l9WIw3nKahPiT4xQUfb2bB9zFGCJt8nt2RQmAIDzI6lUgB_GBKnCoaVsZz9Qxa6J0oNAmErnFKNLQ-zQAiDkZ2JhT7s1f7qRsqhIVA88Mg"/>
+<div class="absolute bottom-4 left-4 right-4 p-sm bg-white/90 backdrop-blur-sm rounded-lg border border-on-surface">
+<p class="font-label-bold text-label-bold text-primary">Phở Bò Tái Lăn</p>
+</div>
+</div>
+<!-- Banh Mi -->
+<div class="masonry-item-wide rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Top-down high-fidelity photo of a crispy Vietnamese Banh Mi sandwich sliced in half, showing layers of pate, pickled carrots, daikon, cucumber, and grilled pork. The lighting is bright and airy, typical of a modern street food market, with sharp focus on the crusty baguette texture. The color palette uses warm yellows and vibrant orange accents from the pickles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM-WnRz1GAyDAJCurE699SWwAXhkYsmE9F31wYa0lQidS1lXlSGirWPHKGa6U5BVfZTxwDKje-FVxXT2Ibxlh-p5yKjFcYhF5y6qrSmy9ljW0Hb3CcJ1fgfPnRANHFsUSA3Z0TWSFxtzbKP9yjLYiMjYfIVEeGDGDNuN6NRJOWjdNOFh7LChme3_e9njmlJzyxN9XJphuxLBQ-TZ0K_warORYWTCq3ugoUuzkTypXEF6KFSLude58T3A"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-sm py-xs rounded-full font-label-bold text-label-bold">
+                    Phổ biến nhất
                 </div>
-<h1 class="font-display-lg text-display-lg text-on-surface mb-md">LIÊN HỆ</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                    Tìm thấy chúng tôi giữa lòng Warsaw, hãy ghé thăm bất cứ khi nào bạn thèm hương vị đường phố đích thực của Hà Nội.
-                </p>
 </div>
-<div class="w-full md:w-1/3 h-48 rounded-lg overflow-hidden border-2 border-primary rotate-3 shadow-lg">
-<div class="w-full h-full bg-cover bg-center" data-alt="A close-up high-resolution shot of authentic Vietnamese street food like Pho and crispy spring rolls on a wooden table. The lighting is warm and inviting, capturing the vibrant greens of fresh herbs and the golden textures of fried delicacies. The overall style is modern urban, reflecting a premium food brand aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKSpRaopoqtMJc_F9DMdslDJkivlfJSsO1QXV-NGq6FkK7ayIfIEwOQcXxbIjigfR69Aci5375Mx9mYy_NdY3v5Wxb8zV9Sa8f4gLSvDaCIwc33tSq0UL8FzqJ0gDs6j1HLdpoAnezF0n7HymEZ4jFdkZETviwqoIECI5Vn5frF9a26gb4DXCE69HUwiCQIFJqzGVpvmFeUUbaSkxd1BLFNKCnCgyveNcgu_4Zsvgtckx3oxlaYNyPJA')"></div>
+<!-- Spring Rolls -->
+<div class="rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A minimalist composition of fresh Vietnamese Spring Rolls (Goi Cuon) with translucent rice paper revealing pink shrimp and green herbs, served with a side of golden peanut dipping sauce. The style is clean and high-end urban minimalist, featuring soft shadows on a bright off-white surface, emphasizing the freshness and health-conscious vibe of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS5_XGjcnlDyJYUtdmvYAaWhNU199ABhmyW1iRdFwbNGUCD29chBZA6qOQqxnzNJwcGTxnPir9YiXmkqhGcKEp449t6W9f58bsTMXOqpHPLBh6rCodDtyIXwfKoQj0udMXy8zsgt3QsCzUBrmOO4H1-WUV9p0R4xt5PCWzhxv4phA3tHr3BT1b5RhKDjPfBYUB3g2JlR0ycRT9tVHVFtI9IT79DvXbwyGzrc8fdpM_fYsMNB4bTX1YVw"/>
 </div>
-</section>
-<!-- Main Content Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Left Info Column -->
-<div class="lg:col-span-5 space-y-md">
-<!-- Address Card -->
-<div class="bg-white p-md rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] urban-shadow-hover transition-all duration-300">
-<div class="flex items-center gap-sm mb-sm text-primary">
-<div class="bg-primary text-white p-sm rounded-lg shadow-sm">
-<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
-</div>
-<h2 class="font-headline-md text-headline-md uppercase">ĐỊA CHỈ</h2>
-</div>
-<div class="font-body-md text-body-md text-on-surface-variant">
-<p class="font-bold text-on-surface">Pańska 63</p>
-<p>00-830 Warszawa</p>
-<p>Polska</p>
+<!-- Bun Cha -->
+<div class="masonry-item-tall masonry-item-wide md:grid-column-span-1 rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Vibrant lifestyle shot of a Bun Cha platter with grilled pork patties in a flavorful broth, a stack of rice vermicelli, and a large basket of fresh Vietnamese herbs. The lighting captures the energetic atmosphere of a Hanoi street market, with rich color saturation and high contrast. The composition is dynamic and full of life, following a modern urban aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMKs6ywsWHnL0W-uv6P-nw-Q_5iJfTEpCVwTb8hsjrM_7DVqOVJizf__3Ts6V77CFC2Sdjj98LV95BbWZyeasEZyw8dePhS72gbVHm8SF9JTrnmL0z05RIe02xPLDLNY5REu6r9xpqqJDm2asLhf8cnTludvvmIT_8m6cbIpZIrvgMTxRvFbWcgcrlb9jkQoHo5XbyHa0aRSUzZupiNOtyMkxuts06fI_IuKRQOtzR0UmgqRlmbPanuA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
+<h3 class="font-headline-md text-headline-md text-white">Tinh hoa Hà Nội</h3>
 </div>
 </div>
-<!-- Contact Card -->
-<div class="bg-white p-md rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] urban-shadow-hover transition-all duration-300">
-<div class="flex items-center gap-sm mb-md text-primary">
-<div class="bg-primary text-white p-sm rounded-lg shadow-sm">
-<span class="material-symbols-outlined" data-icon="phone">phone</span>
+<!-- More dishes -->
+<div class="rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Close-up of golden fried Nem Ran (crispy spring rolls) stacked neatly, showing the flaky texture of the fried rice paper. Warm lighting accentuates the golden-brown color, set against a neutral, bright background. The mood is appetising and energetic, capturing the essence of Vietnamese crispy street food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH7r-0V44dTdiDSvIEGJpgZbeSoXF0oNXMgyD7V81hoHTm6sFRhNRT9iwhbWMBgrrRnLDee6UL7qpjW0oCcivVU_B3g---7cPUecIj7hxgN3yGHmYd-fsDLtGGYU5_qYjhmbh1jKGsp2tZZvXuEMq6cHH5CLSRj_8EyVNDlmmWcfGUr6WUAVYS3FrNmqpg31UdNsxSCwwnPqUpSpNqmQNDKkFQu6_ZZBumoCaEtnX_zA4StKu_hKp8EQ"/>
 </div>
-<h2 class="font-headline-md text-headline-md uppercase">LIÊN HỆ</h2>
+<div class="rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A refreshing glass of Vietnamese Iced Coffee with condensed milk (Ca Phe Sua Da) showing distinct layers of dark coffee and white milk. The scene includes scattered coffee beans on a clean white surface with sharp, crisp shadows, conveying a modern and stylish urban beverage experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpu9_PsxrTXdKuH1FrK3VHaPmzWf-IOqJO96yhGRKxnF1PljuZBs95a_BQ3mjNGpRU3Al0G3zYwTYBOpO0PtsHtfyPQRxuIoj5uKU-vx8i69LEgUI-ZJ-Hngn_kkwZQILEzU5ELNWsmb7GgcQFzsVQBwGTx1T0234PnpdLJcQtSCCDMeUz71PzQzfqPmBxQqEETZjhzLHRjQ7fOCRfq-bgfI306tGYdplyUIEEXOqtOXnFm_UjreDS8A"/>
 </div>
-<div class="space-y-sm">
-<a class="flex items-center gap-sm p-sm bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors group" href="tel:+48696145735">
-<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
-<span class="font-label-bold text-label-bold group-hover:text-primary transition-colors">+48 696 145 735</span>
-</a>
-<a class="flex items-center gap-sm p-sm bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors group" href="mailto:kontakt@hellovietnampanska.pl">
-<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
-<span class="font-label-bold text-label-bold group-hover:text-primary transition-colors">kontakt@hellovietnampanska.pl</span>
-</a>
+<div class="masonry-item-tall rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Artistic shot of a bowl of Bun Bo Hue, the spicy beef noodle soup from Central Vietnam, with its characteristic deep red broth, thick rice noodles, and bundles of fresh morning glory and banana blossom. The lighting is high-key and modern, emphasizing the intense red and green colors against a pristine light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdEqHkpt_C-FShZxXQr-BrWhXJJ5DSaUhKO5QDqrV_pvqJKqbcxPLXhMGufWTFqLftqQNs25VRXLc52JSlyt9oFL2tLXZ81dHkElxZ8q8aMfOmaWgSAEeobeAo-EL_bwG_1yRbOzOUaanTbThlI5JusRyrEX4jo9LPKZBM6CBFIeUQ-n9QqCjtauuRJ4-8VUsHcUvyZIdCWrKoqiDZbCrZiw05B7fpfHJSKMHkunbulBB1UI3szV3dRQ"/>
+</div>
+<!-- Interior -->
+<div class="masonry-item-wide rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] bg-white overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Interior view of a modern Vietnamese restaurant 'Hanoi Asian Food', featuring industrial chic design with bamboo accents, vibrant green neon signs, and communal wooden tables. The atmosphere is organized chaos, energetic and youthful, with people enjoying food in a bright, light-mode setting with high ceilings and urban textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX24nBlxI4NPWlyYgd8pNOsUIDEhWpuTyUjAbwrFG60OXq_MQlWkmciYfP6Tfhi0zvSCuor34JP2xeMGaHCrBI5uMsoJ3as7viIsrtkg02jcvyPOb3COxwMVF28JAgE22Ez3zjCkgpVvWI7Ngm2dzIFFwqrIykWN5RkIZikH8e_6FSphO4jrRgWbWzNXolMfobxzO7BPqaQusvrmKaP-damkNCy1Lch1HAXPo7ubrHUdAZa9gWeRanbA"/>
 </div>
 </div>
-<!-- Hours Card -->
-<div class="bg-white p-md rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] urban-shadow-hover transition-all duration-300">
-<div class="flex items-center gap-sm mb-md text-primary">
-<div class="bg-primary text-white p-sm rounded-lg shadow-sm">
-<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<!-- CTA Section -->
+<section class="mt-xl bg-primary-container/10 rounded-2xl p-lg border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] flex flex-col md:flex-row items-center justify-between gap-lg">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm uppercase">Bạn đã thấy đói chưa?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Đặt món ngay bây giờ để thưởng thức những hương vị chuẩn Hà Nội ngay tại nhà bạn hoặc ghé thăm chúng tôi.</p>
 </div>
-<h2 class="font-headline-md text-headline-md uppercase">GIỜ MỞ CỬA</h2>
-</div>
-<div class="space-y-xs">
-<div class="flex justify-between p-sm border-b border-outline-variant">
-<span class="font-body-md">Thứ Hai - Thứ Sáu</span>
-<span class="font-label-bold text-primary">11:30 - 22:00</span>
-</div>
-<div class="flex justify-between p-sm">
-<span class="font-body-md">Thứ Bảy - Chủ Nhật</span>
-<span class="font-label-bold text-primary">12:00 - 22:00</span>
-</div>
-</div>
-</div>
-<!-- Socials Card -->
-<div class="bg-white p-md rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] urban-shadow-hover transition-all duration-300">
-<div class="flex items-center gap-sm mb-md text-primary">
-<div class="bg-primary text-white p-sm rounded-lg shadow-sm">
-<span class="material-symbols-outlined" data-icon="share">share</span>
-</div>
-<h2 class="font-headline-md text-headline-md uppercase">THEO DÕI CHÚNG TÔI</h2>
-</div>
-<button onclick="window.open('https://instagram.com','_blank')" class="w-full flex items-center justify-center gap-sm py-3 bg-primary hover:bg-primary-container text-white font-label-bold rounded-full transition-all active-press uppercase">
-<img src="instagram.png" class="h-5 w-5 object-contain" alt="Instagram"/>
-                        INSTAGRAM
-                    </button>
-</div>
-</div>
-<!-- Right Map Column -->
-<div class="lg:col-span-7 h-[600px] lg:h-auto min-h-[400px]">
-<div class="w-full h-full rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] overflow-hidden relative group">
-<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLubAj0t2oBpENY0W_xRkx4Yiu30vvW9GjDI729NZB_shWocxPM0XB0vNJuEeXiViPNbDN799FGMr4AZtdEdnJfxpySXAxAaznmj5x3hg6zbb_J92zeXqy1zJgS6lEphMLTqdziaorRTE1RwRJaM9dUuW73qsrzH6k3JPQeh4Et4VvKxwemPLs-WBAgUVYSvkAVO29rl4yqPSYsVbBby7q9BZE6ONO3-rVhMvMGtJj9S5r5MFTuTLW2EHDs"/>
-<div class="absolute inset-0 bg-gradient-to-t from-on-surface/20 to-transparent pointer-events-none"></div>
-<!-- Floating Map Action -->
-<div class="absolute bottom-md right-md">
-<button onclick="window.open('https://maps.google.com/?q=Panska+63,+Warsaw','_blank')" class="bg-white hover:bg-surface-container text-on-surface font-label-bold px-6 py-3 rounded-full border border-on-background/10 transition-colors active-press uppercase flex items-center gap-2 shadow-xl">
-<span class="material-symbols-outlined" data-icon="directions">directions</span>
-<span class="font-label-bold">Chỉ đường</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Atmospheric Section -->
-<section class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="md:col-span-2 bg-primary-container/10 p-lg rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] flex flex-col justify-center">
-<h3 class="font-headline-md text-headline-md text-primary mb-sm uppercase">Trải nghiệm vị phố</h3>
-<p class="font-body-md text-on-surface-variant">
-                    Bếp của chúng tôi luôn sẵn sàng phục vụ những món ăn đậm chất Hà Nội. Từ bát Phở nóng hổi đến những chiếc Nem rán giòn rụm, mỗi món ăn là một câu chuyện về hương vị.
-                </p>
-</div>
-<div class="bg-white p-base rounded-2xl border-2 border-on-background shadow-[4px_4px_0px_#1C1B1B] transform -rotate-2">
-<div class="w-full h-48 bg-cover bg-center rounded-lg" data-alt="A stylized atmospheric photo of a busy Vietnamese night market with glowing lanterns, steam rising from street food stalls, and blurred crowds. The color palette emphasizes warm oranges and deep greens. The shot uses a cinematic lens flare effect to create an energetic, rhythmic urban mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCX2936GhhD0V40Fpwq6xZ6kWnee-NWF8KBhemaG6O9DkBUnr40ik1yh3yj0cSXomg9dsYQgKGMZCq8UyWc4EqmYgZNwfFKfJ9IrOz8_qtdLMV-T2v0PtttknhaYlj-Z6uSHMiM14384vBWupWDqw1tIguKWiMlloaUGW3Zi0EjSaCvYsthv3WcPK6OiZ51fx_YiKZ1j2KRAqPsJxBC2N3S-YJu0ZOF4c1aQUVmrXCl7BHa6EdQrswQWQ')"></div>
+<div class="flex flex-col sm:flex-row gap-md w-full md:w-auto">
+<button onclick="window.location.href='order.html'" class="bg-primary hover:bg-primary-container text-white font-headline-md text-headline-md px-8 py-3 rounded-full transition-colors active-press uppercase whitespace-nowrap">
+                    ĐẶT MÓN NGAY
+                </button>
+<button onclick="window.location.href='contact.html'" class="bg-white hover:bg-surface-container text-on-background font-headline-md text-headline-md px-8 py-3 rounded-full border border-on-background/10 transition-colors active-press uppercase whitespace-nowrap">
+                    ĐẶT BÀN
+                </button>
 </div>
 </section>
 </main>
+<!-- Footer -->
 <!-- Footer Updated -->
 <footer class="w-full px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-1 md:grid-cols-4 gap-gutter bg-on-background text-primary-fixed border-t-2 border-primary">
     <div class="flex flex-col gap-sm md:col-span-1">
